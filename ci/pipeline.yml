@@ -6,7 +6,7 @@ jobs:
     trigger: true
   - put: docker-image-repo
     params:
-      build: .
+      build: cg-sast-docker-image
 
 resources:
 - name: cg-sast-docker-image

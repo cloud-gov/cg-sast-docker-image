@@ -6,7 +6,7 @@ for dir in ./*/; do
     dir=${dir%*/}
     dir=${dir##*/}
 
-    (cd $dir && gas $GAS_OPTS -out ../results/$dir.json ./...)
+    (cd $dir && gas $GAS_OPTS -fmt json -out ../results/$dir.json ./...)
 done
 
-rm results/results.json
+cd results && rm results.json && collate results.json *.json
