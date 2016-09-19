@@ -1,0 +1,22 @@
+---
+jobs:
+- name: push-cg-sast-docker-image
+  plan:
+  - get: cg-sast-docker-image
+    trigger: true
+  - put: docker-image-repo
+
+resources:
+- name: cg-sast-docker-image
+  type: git
+  source:
+    uri: {{cg-sast-docker-image-git-url}}
+    branch: {{cg-sast-docker-image-git-branch}}
+
+- name: docker-image-repo
+  type: docker-image
+  source:
+    email: {{docker-email}}
+    username: {{docker-username}}
+    password: {{docker-password}}
+    repository: {{docker-repository}}
